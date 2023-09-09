@@ -1,3 +1,5 @@
+'use client'
+
 import { Collapse, Input, Loader, ChevronIcon } from "@mantine/core";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -9,19 +11,14 @@ import {
   faPlusSquare,
   faTrashAlt,
 } from "@fortawesome/free-regular-svg-icons";
-import { useDispatch, useSelector } from "react-redux";
-import dfs from "./j/file";
+import dfs from "../../Resources/file";
+import HomePage from "../../Resources/file";
 // import _ from 'lodash';
 
-function AddRole() {
-  const dispatch = useDispatch();
-  const { Tree, isLoading } = useSelector((state) => state.Tree);
-  // const TempTree = {};
-
-  // const [Tree, setTree] = useState();
-  // const [Tree2, setTree2] = useState();
+function AddRole({ Treedata }) {
+  console.log('TreeData>>>', Treedata)
   const [TempTree, setTempTree] = useState();
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [chosen, setChosen] = useState(false);
   const [chosenNode, setChosenNode] = useState();
   const [nodeParent, setNodeParent] = useState();
@@ -46,8 +43,9 @@ function AddRole() {
     children: t[];
   }
 
+  let ddt;
   useEffect(() => {
-    setTempTree(dfs());
+    
   },[])
 
   const folded = (node: t) => {
